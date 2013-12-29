@@ -9,16 +9,16 @@
  *
  * @group Vendo_ACL
  */
-class ACL_Test extends Vendo_TestCase
+class ACL_Test extends Unittest_TestCase
 {
 	/**
 	 * Tests that we can process and read and delete a photo
 	 * 
 	 * @return null
-	 */
 	public function test_user_can()
 	{
 		// They aren't logged in
 		$this->assertFalse(self::$user->can('manage_preferences'));
 	}
+	 */
 }

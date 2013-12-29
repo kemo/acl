@@ -1,16 +1,15 @@
 <?php
 /**
- * Policy class to determine if the user can logout
+ * Policy class to determine if the user can login
  *
- * @package   Vendo
+ * @package   Acl
  * @author    Jeremy Bush <contractfrombelow@gmail.com>
  * @copyright (c) 2010-2011 Jeremy Bush
  * @license   ISC License http://github.com/zombor/Vendo/raw/master/LICENSE
  */
-class Vendo_Policy_Logout extends Policy
+class Acl_Policy_Login extends Policy
 {
-	const NOT_LOGGED_IN   = 1;
-	const NOT_ACTIVE_USER = 2;
+	const LOGGED_IN = 1;
 
 	/**
 	 * Method to execute the policy
@@ -23,14 +22,11 @@ class Vendo_Policy_Logout extends Policy
 	 */
 	public function execute(Model_ACL_User $user, array $extra = NULL)
 	{
-		if ($user->has('roles', Model_Vendo_Role::LOGIN))
+		if ($user->id == Auth::instance()->get_user()->id AND ! Auth::instance()->logged_in())
 			return TRUE;
 
-		if ($user->id != Auth::instance()->get_user()->id)
-			return self::NOT_ACTIVE_USER;
-
-		if ( ! Auth::instance()->logged_in())
-			return self::NOT_LOGGED_IN;
+		if (Auth::instance()->logged_in())
+			return self::LOGGED_IN;
 
 		return FALSE;
 	}

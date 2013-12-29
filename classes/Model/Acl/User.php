@@ -2,12 +2,12 @@
 /**
  * ACL enabled user model interface
  *
- * @package   Vendo
+ * @package   Acl
  * @author    Jeremy Bush <contractfrombelow@gmail.com>
  * @copyright (c) 2010-2011 Jeremy Bush
  * @license   ISC License http://github.com/zombor/Vendo/raw/master/LICENSE
  */
-interface Model_ACL_User
+interface Model_Acl_User
 {
 	/**
 	 * Wrapper method to execute ACL policies. Only returns a boolean, if you
