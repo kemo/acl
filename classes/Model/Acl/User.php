@@ -1,6 +1,6 @@
 <?php
 /**
- * ACL enabled user model class
+ * ACL enabled user model interface
  *
  * @package   Vendo
  * @author    Jeremy Bush <contractfrombelow@gmail.com>

@@ -22,17 +22,11 @@ class Vendo_Policy_Login extends Policy
 	 */
 	public function execute(Model_ACL_User $user, array $extra = NULL)
 	{
-		if (
-			$user->id == Auth::instance()->get_user()->id
-			AND ! Auth::instance()->logged_in()
-		)
-		{
+		if ($user->id == Auth::instance()->get_user()->id AND ! Auth::instance()->logged_in())
 			return TRUE;
-		}
-		elseif (Auth::instance()->logged_in())
-		{
+
+		if (Auth::instance()->logged_in())
 			return self::LOGGED_IN;
-		}
 
 		return FALSE;
 	}

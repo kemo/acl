@@ -24,17 +24,13 @@ class Vendo_Policy_Logout extends Policy
 	public function execute(Model_ACL_User $user, array $extra = NULL)
 	{
 		if ($user->has('roles', Model_Vendo_Role::LOGIN))
-		{
 			return TRUE;
-		}
-		elseif ($user->id != Auth::instance()->get_user()->id)
-		{
+
+		if ($user->id != Auth::instance()->get_user()->id)
 			return self::NOT_ACTIVE_USER;
-		}
-		elseif ( ! Auth::instance()->logged_in())
-		{
+
+		if ( ! Auth::instance()->logged_in())
 			return self::NOT_LOGGED_IN;
-		}
 
 		return FALSE;
 	}
